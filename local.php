@@ -1,9 +1,15 @@
 <?php
+    
+    $sleep = false;
+    if (isset($_GET['sleep'])) {
+        $sleep = true;
+    }
 
     $url = 'http://37.187.119.228/temps-reel/';
 
     $t0 = microtime(true);
-    // sleep(2);
+    if ($sleep)
+        sleep(2);
 
     $localeDate = date('m/d/Y H:i:s');
 
@@ -14,7 +20,8 @@
     $result=curl_exec($curl);
     curl_close($curl);
 
-    // sleep(3);
+    if ($sleep)
+        sleep(3);
     $t3 = microtime(true);
 
     $result = json_decode($result);
@@ -39,7 +46,7 @@
     ";
 
     echo "
-    <h1>Calcul du décalage d'horloge</h1>
+    <h2>Calcul du décalage d'horloge</h2>
       <table border='1'>
         <tr>
           <th>T0 (client)</th><th>T1 (serveur)</th><th>T2 (serveur)</th><th>T3 (client)</th><th>ϴ</th>
