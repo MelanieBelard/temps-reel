@@ -2,9 +2,9 @@
 
     // "Serveur NTP" qui envoie les temps T1 et T2 que le serveur local utilisera
 
-    $t1   = time();
+    $t1   = microtime(true);
     $date = date('m/d/Y H:i:s');
-    $t2   = time();
+    $t2   = microtime(true);
 
     $json = json_encode(array(
         'T1'   => $t1,
